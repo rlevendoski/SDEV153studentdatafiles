@@ -5,6 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="pacific.css">
         <title>Pacific Trails Resort :: Reservations</title>
+        <script>
+            function validatePhone() {
+            var phoneNumber = document.getElementById("myPhone").value;
+            var phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+            if (document.forms[0].myPhone.value == "" ) {
+                alert("Phone field cannot be empty.");
+            return false;
+            } // end if
+            // Function to validate phone number format
+            if (!phoneRegex.test(phoneNumber)) {
+                alert("Please enter phone number in XXX-XXX-XXXX format only");
+            return false;
+            } // end function validatePhone
+        }
+        </script>
     </head>
     <body>
         <header>
@@ -24,7 +39,8 @@
         <h2>Reservations at Pacific Trails</h2>
             <h3>Contact Us</h3>
             <p>Required fields are marked with an asterisk*.</p>
-        <form method="post" action="https://webdevbasics.net/scripts/pacific.php">
+        <form method="post" action="https://webdevbasics.net/scripts/pacific.php"
+            onsubmit="return validatePhone();">
             <label for="myFName">*First Name:</label>
                 <input type="text" name="myFName" id="myFName" required>
             <label for="myLName">*Last Name:</label>
@@ -39,7 +55,7 @@
                 <input type="text" name="myZip" id="myZip" minlength="5" maxlength="10">
             <label for="myEmail">*E-mail:</label>
                 <input type="text" name="myEmail" id="myEmail" required>
-            <label for="myPhone">Phone:</label>
+            <label for="myPhone">*Phone:</label>
                 <input type="text" name="myPhone" id="myPhone" required>
             <label for="myDate">Arrival Date:</label>
                 <input type="date" name="myDate" id="myDate">
